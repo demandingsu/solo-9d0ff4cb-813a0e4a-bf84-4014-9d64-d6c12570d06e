@@ -36,3 +36,39 @@ curl -s -X POST "$BASE/publications"
 step "8. publication history (only the newest is current)"
 curl -s "$BASE/publications"
 echo
+
+step "9. fertilizer: record operation 1 (start weight + plot weighings)"
+curl -s -X POST "$BASE/fertilizer/operations" \
+  -H 'Content-Type: application/json' -d @"$EX/fertilizer_operation.json"
+echo
+
+step "10. fertilizer status: consumptions, refills, merged doses, control pending"
+curl -s "$BASE/fertilizer/status"
+echo
+
+step "11. approve the flow -> report frozen with provenance"
+curl -s -X POST "$BASE/fertilizer/approvals"
+echo
+
+step "12. operation 2 has a missing seq 2 -> pending, never treated as zero"
+curl -s -X POST "$BASE/fertilizer/operations" \
+  -H 'Content-Type: application/json' -d @"$EX/fertilizer_operation_gap.json"
+echo
+curl -s "$BASE/fertilizer/status"
+echo
+
+step "13. late-insert the missing weighing -> neighbours recomputed"
+curl -s -X POST "$BASE/fertilizer/corrections" \
+  -H 'Content-Type: application/json' -d @"$EX/fertilizer_late_entry.json"
+echo
+
+step "14. correct an operation-1 weighing -> old approval now stale"
+curl -s -X POST "$BASE/fertilizer/corrections" \
+  -H 'Content-Type: application/json' -d @"$EX/fertilizer_correction.json"
+echo
+curl -s "$BASE/fertilizer/approvals"
+echo
+
+step "15. re-approve from the new snapshot"
+curl -s -X POST "$BASE/fertilizer/approvals"
+echo

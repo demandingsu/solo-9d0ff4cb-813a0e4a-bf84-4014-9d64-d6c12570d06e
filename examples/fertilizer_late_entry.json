@@ -1,0 +1,6 @@
+{
+  "operation_no": 2,
+  "entries": [
+    {"seq": 2, "block_id": 1, "treatment": "B", "remaining_weight": 60.0, "refill": 0.0}
+  ]
+}

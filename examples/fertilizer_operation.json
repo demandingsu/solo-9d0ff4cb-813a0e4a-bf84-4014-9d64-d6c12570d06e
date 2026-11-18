@@ -1,0 +1,9 @@
+{
+  "start_weight": 100.0,
+  "entries": [
+    {"seq": 1, "block_id": 1, "treatment": "B", "remaining_weight": 70.0, "refill": 20.0},
+    {"seq": 2, "block_id": 2, "treatment": "B", "remaining_weight": 65.0, "refill": 0.0},
+    {"seq": 3, "block_id": 3, "treatment": "B", "remaining_weight": 55.0, "refill": 0.0},
+    {"seq": 4, "block_id": 4, "treatment": "B", "remaining_weight": 40.0}
+  ]
+}

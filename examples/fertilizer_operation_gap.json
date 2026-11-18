@@ -1,0 +1,7 @@
+{
+  "start_weight": 80.0,
+  "entries": [
+    {"seq": 1, "block_id": 5, "treatment": "B", "remaining_weight": 68.0},
+    {"seq": 3, "block_id": 6, "treatment": "B", "remaining_weight": 48.0}
+  ]
+}

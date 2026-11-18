@@ -20,6 +20,7 @@ from fastapi.responses import RedirectResponse
 
 from . import db
 from .analysis import evaluate_blocks, exact_randomization_p
+from .fertilizer_routes import router as fertilizer_router
 from .schemas import (
     BlockStatus,
     CorrectionRequest,
@@ -55,6 +56,8 @@ app = FastAPI(
     ),
     lifespan=lifespan,
 )
+
+app.include_router(fertilizer_router)
 
 
 # ---------------------------------------------------------------- helpers
